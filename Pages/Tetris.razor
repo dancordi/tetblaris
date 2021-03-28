@@ -1,0 +1,12 @@
+﻿@page "/tetris"
+
+<audio id="tetris_theme" src="../sounds/tetris-theme.ogg" preload="auto" loop="loop" />
+
+<div class="row">
+    <div class="col">
+        <div class="tetris-container" tabindex="0" @onkeydown="KeyDown" @ref="gameBoardDiv">
+            
+        </div>
+    </div>
+    </div>
+
