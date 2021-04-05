@@ -8,7 +8,7 @@ namespace tetblaris.Models
         int Rows { get; }
         bool HasAnyTetrominoInRow(int row);
         int ClearCompletedRows();
-        GameBoardRow GetRow(int i);
+        IGameBoardRow GetRow(int i);
         void TakeCell(IGameBoardCell cell);
         void TakeCells(List<IGameBoardCell> cells);
     }

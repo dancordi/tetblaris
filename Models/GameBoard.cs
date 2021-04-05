@@ -21,7 +21,7 @@ namespace tetblaris.Models
         /// <summary>
         /// Gameboard's rows
         /// </summary>
-        private readonly List<GameBoardRow> GameBoardRows;
+        private readonly List<IGameBoardRow> GameBoardRows;
 
         /// <summary>
         /// 
@@ -33,7 +33,7 @@ namespace tetblaris.Models
             this.Rows = rows;
             this.Cols = cols;
             //create the GameBoardRows 
-            GameBoardRows = new List<GameBoardRow>();
+            GameBoardRows = new List<IGameBoardRow>();
             for (int i = 0; i < this.Rows; i++)
             {
                 GameBoardRows.Add(new GameBoardRow(i, this.Cols));
@@ -117,7 +117,7 @@ namespace tetblaris.Models
         /// </summary>
         /// <param name="rowNumber">row number</param>
         /// <returns></returns>
-        public GameBoardRow GetRow(int rowNumber)
+        public IGameBoardRow GetRow(int rowNumber)
         {
             if (rowNumber >= 0 && rowNumber < this.Rows)
             {

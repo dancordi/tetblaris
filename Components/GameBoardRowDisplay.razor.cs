@@ -7,10 +7,10 @@ namespace tetblaris.Components
     public partial class GameBoardRowDisplay : ComponentBase
     {
         [Parameter]
-        public GameBoardRow Row {get; set;}
+        public IGameBoardRow Row { get; set; }
 
         [Parameter]
-        public ITetromino Tetromino {get; set;}
+        public ITetromino Tetromino { get; set; }
 
 
     }

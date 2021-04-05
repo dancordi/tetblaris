@@ -140,6 +140,18 @@ namespace tetblaris.Features
         {
             switch (style)
             {
+                case TetrominoStyle.Straight:
+                    return new Straight(this.GameBoard);
+                // case TetrominoStyle.TShaped:
+                //     return null;
+                // case TetrominoStyle.LeftZigZag:
+                //     return null;
+                // case TetrominoStyle.RightZigZag:
+                //     return null;
+                // case TetrominoStyle.LShaped:
+                //     return null;
+                // case TetrominoStyle.ReverseLShaped:
+                //     return null;
                 case TetrominoStyle.Block:
                 default:
                     return new Block(this.GameBoard);
