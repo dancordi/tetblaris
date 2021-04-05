@@ -1,0 +1,21 @@
+@if (Row != null && Tetromino != null)
+{
+    @foreach (var cell in Row.Cells)
+    {
+        string extraCSS = "";
+        //check if the tetramino has any covered cell in this cell
+        if (Tetromino.CoveredCells.Any(_=>_.Row==cell.Row && _.Column==cell.Column))
+        {
+            extraCSS = "tetris-piece " + Tetromino.CssClass;
+        }
+
+        //check if the current cell is taken
+        if (cell.IsTaken)
+        {
+            extraCSS = "tetris-piece " + cell.CssClass;
+        }
+        
+        string id = $"{cell.Row}-{cell.Column}";
+        <div id="@id" class="tetris-cell @extraCSS"></div>
+    }
+}

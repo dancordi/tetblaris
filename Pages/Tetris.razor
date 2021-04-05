@@ -5,8 +5,40 @@
 <div class="row">
     <div class="col">
         <div class="tetris-container" tabindex="0" @onkeydown="KeyDown" @ref="gameBoardDiv">
-            
+            @for (int i = Game.GameBoard.Rows - 1; i >= 0; i--)
+            {
+                <div class="tetris-row">
+                    <GameBoardRowDisplay Row="@Game.GameBoard.GetRow(i)" Tetromino="@Game.CurrentTetromino" />
+                </div>
+            }
         </div>
     </div>
-    </div>
 
+    <div class="col">
+        @if (Game.State == Models.Enums.GameState.GameOver)
+        {
+            <h1>Game Over!</h1>
+            <p>Thanks for playing!</p>
+        }
+        @if (Game.State == Models.Enums.GameState.Playing)
+        {
+            <div class="row">
+                <div class="col">
+                    <h2>Upcoming Pieces</h2>
+                </div>
+            </div>
+            <TetrominoDisplay Style="Game.NextStyle" />
+            <TetrominoDisplay Style="Game.SecondNextStyle" />
+            <TetrominoDisplay Style="Game.ThirdNextStyle" />
+            <div class="row">
+            <div class="col">
+                <h3>Controls</h3>
+                <span>&#8592;</span> / <span>&#8594;</span> Move Tetromino<br />
+                <span>&#8593;</span>: Rotate Tetromino<br />
+                <span>&#8595;</span> / <span>Space</span>: Drop Tetromino<br />
+                <span>M</span>: Toggle Audio
+            </div>
+        </div>
+        }
+    </div>
+</div>
