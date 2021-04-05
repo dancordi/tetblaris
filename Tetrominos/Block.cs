@@ -17,9 +17,9 @@ namespace tetblaris.Tetrominos
             this.Orientation = Models.Enums.TetrominoOrientation.LeftRight;
         }
 
-        public override string CssClass { get { return "tetris-yellow-cell"; } }
+        public override string CssClass => "tetris-yellow-cell";
 
-        public override TetrominoStyle Style { get { return Models.Enums.TetrominoStyle.Block; } }
+        public override TetrominoStyle Style => Models.Enums.TetrominoStyle.Block;
 
         /// <summary>
         /// the covered cells near the centerpiece for this tetromino 

@@ -142,35 +142,21 @@ namespace tetblaris.Features
             {
                 case TetrominoStyle.Straight:
                     return new Straight(this.GameBoard);
-                // case TetrominoStyle.TShaped:
-                //     return null;
-                // case TetrominoStyle.LeftZigZag:
-                //     return null;
-                // case TetrominoStyle.RightZigZag:
-                //     return null;
-                // case TetrominoStyle.LShaped:
-                //     return null;
-                // case TetrominoStyle.ReverseLShaped:
-                //     return null;
+                case TetrominoStyle.TShaped:
+                    return new TShaped(this.GameBoard);
+                case TetrominoStyle.LeftZigZag:
+                    return new LeftZigZag(this.GameBoard);
+                case TetrominoStyle.RightZigZag:
+                    return new RightZigZag(this.GameBoard);
+                case TetrominoStyle.LShaped:
+                    return new LShaped(this.GameBoard);
+                case TetrominoStyle.ReverseLShaped:
+                    return new ReverseLShaped(this.GameBoard);
                 case TetrominoStyle.Block:
                 default:
                     return new Block(this.GameBoard);
             }
-            // return style switch
-            // {
-            //     TetrominoStyle.Block => new Block(),
-            //     TetrominoStyle.Straight => new Straight(grid),
-            //     TetrominoStyle.TShaped => new TShaped(grid),
-            //     TetrominoStyle.LeftZigZag => new LeftZigZag(grid),
-            //     TetrominoStyle.RightZigZag => new RightZigZag(grid),
-            //     TetrominoStyle.LShaped => new LShaped(grid),
-            //     TetrominoStyle.ReverseLShaped => new ReverseLShaped(grid),
-            //     _ => new Block(),
-            // };
         }
-
-
-
 
         //Delays the game up to the passed-in amount of milliseconds in 50 millisecond intervals
         internal async Task Delay(int millis)

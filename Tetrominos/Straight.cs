@@ -17,7 +17,12 @@ namespace tetblaris.Tetrominos
         {
         }
 
+        public override string CssClass => "tetris-lightblue-cell";
+
+        public override TetrominoStyle Style => TetrominoStyle.Straight;
+
         public override List<IGameBoardCell> CoveredCells
+
         {
             get
             {
@@ -50,8 +55,5 @@ namespace tetblaris.Tetrominos
             }
         }
 
-        public override string CssClass { get { return "tetris-lightblue-cell"; } }
-
-        public override TetrominoStyle Style { get { return TetrominoStyle.Straight; } }
     }
 }
