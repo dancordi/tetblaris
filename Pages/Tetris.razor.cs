@@ -47,7 +47,39 @@ namespace tetblaris.Pages
 
         protected async Task KeyDown(KeyboardEventArgs e)
         {
-            bool isStateChanged = false;
+            if (this.Game.State == Models.Enums.GameState.Playing)
+            {
+                bool isStateChanged = true;
+                switch (e.Key.ToLower())
+                {
+                    case "arrowright":
+                        this.Game.CurrentTetromino.MoveRight();
+                        break;
+                    case "arrowleft":
+                        this.Game.CurrentTetromino.MoveLeft();
+                        break;
+                    case "arrowdown":
+                    case " ":
+                        int addlScore = this.Game.CurrentTetromino.Drop();
+                        this.Game.SkipDelay = true;
+                        break;
+                    case "arrowup":
+                        this.Game.CurrentTetromino.Rotate();
+                        break;
+                    case "p":
+                        this.Game.Pause();
+                        isStateChanged = false;
+                        break;
+                    default:
+                        isStateChanged = false;
+                        break;
+                }
+                if (isStateChanged)
+                {
+                    StateHasChanged();
+                    return;
+                }
+            }
 
             switch (e.Key.ToLower())
             {
@@ -57,46 +89,18 @@ namespace tetblaris.Pages
                         await this.Game.Start();
                     }
                     break;
-                case "p":
-                    if (this.Game.State == tetblaris.Models.Enums.GameState.Playing)
-                    {
-                        this.Game.Pause();
-                    }
-                    break;
                 case "m":
                     await ToggleAudio();
                     break;
-                case "arrowright":
-                    this.Game.CurrentTetromino.MoveRight();
-                    isStateChanged = true;
+                case "p":
+                    this.Game.Resume();
+                    StateHasChanged();
                     break;
-                case "arrowleft":
-                    this.Game.CurrentTetromino.MoveLeft();
-                    isStateChanged = true;
-                    break;
-                case "arrowdown":
-                case " ":
-                    int addlScore = this.Game.CurrentTetromino.Drop();
-                    this.Game.SkipDelay = true;
-                    isStateChanged = true;
-                    break;
-                case "arrowup":
-                    this.Game.CurrentTetromino.Rotate();
-                    isStateChanged = true;
-                    break;
-                default:
-                    break;
-            }
-            if (isStateChanged)
-            {
-                StateHasChanged();
             }
         }
 
         protected async Task ToggleAudio()
         {
-            playAudio = !playAudio;
-
             if (playAudio)
                 await _jsRuntime.InvokeAsync<string>("PlayAudio", "tetris_theme");
             else
@@ -104,6 +108,8 @@ namespace tetblaris.Pages
 
             //Focus the browser on the board div
             await _jsRuntime.InvokeVoidAsync("SetFocusToElement", gameBoardDiv);
+
+            playAudio = !playAudio;
         }
     }
 }

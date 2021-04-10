@@ -100,20 +100,26 @@ namespace tetblaris.Features
                     //LevelChange();
 
                     //evaluate the gameover condition
-                    if (GameBoard.HasAnyTetrominoInRow(GameBoard.Rows))
+                    if (GameBoard.HasAnyTetrominoInRow(GameBoard.Rows - 1))
                     {
                         this.State = GameState.GameOver;
                     }
-                }
 
+                }
                 //delay
                 await Delay(150);
             }
+            Console.WriteLine("game over");
         }
 
         public void Pause()
         {
             this.State = GameState.Paused;
+        }
+
+        public void Resume()
+        {
+            this.State = GameState.Playing;
         }
 
         internal TetrominoStyle Randomize(Random random)

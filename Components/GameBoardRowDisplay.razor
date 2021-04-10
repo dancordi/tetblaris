@@ -1,10 +1,10 @@
-@if (Row != null && Tetromino != null)
+@if (Row != null)
 {
     @foreach (var cell in Row.Cells)
     {
         string extraCSS = "";
         //check if the tetramino has any covered cell in this cell
-        if (Tetromino.CoveredCells.Any(_=>_.Row==cell.Row && _.Column==cell.Column))
+        if (Tetromino!=null && Tetromino.CoveredCells.Any(_=>_.Row==cell.Row && _.Column==cell.Column))
         {
             extraCSS = "tetris-piece " + Tetromino.CssClass;
         }

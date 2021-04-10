@@ -14,7 +14,6 @@ namespace tetblaris.Tetrominos
 
         public Block(IGameBoard gameBoard) : base(gameBoard)
         {
-            this.Orientation = Models.Enums.TetrominoOrientation.LeftRight;
         }
 
         public override string CssClass => "tetris-yellow-cell";

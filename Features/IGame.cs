@@ -18,6 +18,7 @@ namespace tetblaris.Features
         bool SkipDelay { get; set; }
         Task Start();
         void Pause();
+        void Resume();
 
         TetrominoStyle GenerateNextTetraminoStyle(params TetrominoStyle[] unusableStyles);
     }

@@ -15,7 +15,7 @@ namespace tetblaris.Tetrominos
         /// The current orientation of this tetromino. 
         /// Tetrominos rotate about their center.
         /// </summary>
-        public TetrominoOrientation Orientation { get; set; }
+        public TetrominoOrientation Orientation { get; set; } = TetrominoOrientation.LeftRight;
 
         /// <summary>
         /// The X-coordinate of the center piece.
@@ -121,7 +121,6 @@ namespace tetblaris.Tetrominos
             if (CanMoveDown())
             {
                 CenterPieceRow--;
-                Console.WriteLine("Moving down " + CenterPieceRow);
             }
         }
 
